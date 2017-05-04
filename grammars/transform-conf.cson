@@ -28,11 +28,7 @@ patterns: [
             3: {
                 patterns: [
                     {
-                        include: "source.splunk-conf"
-                    }
-                    {
-                        match: ".*"
-                        name: "string.splunk-conf.transforms"
+                        include: "source.splunk-conf.value"
                     }
                 ]
             }
