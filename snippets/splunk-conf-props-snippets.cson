@@ -275,6 +275,498 @@
         "description": "Use this to automatically run the <eval statement> and assign the value of the output to <fieldname>. This creates a \"calculated field.\""
         "descriptionMoreURL": "http://docs.splunk.com/Documentation/Splunk/latest/Admin/Propsconf"
 
+    "EVAL:case(X,\"Y\",...)":
+        "prefix": "case"
+        "body": "case(${1:X}, ${2:Y})${3}"
+        "description": "This function takes pairs of arguments X and Y. The X arguments are Boolean expressions that will be evaluated from first to last. When the first X expression is encountered that evaluates to TRUE, the corresponding Y argument will be returned. The function defaults to NULL if none are true."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:cidrmatch(\"X\",Y)":
+        "prefix": "cidrmatch"
+        "body": "cidrmatch(${1:X}, ${2:Y})${3}"
+        "description": "This function returns true, when IP address Y belongs to a particular subnet X. The function uses two string arguments: the first is the CIDR subnet; the second is the IP address to match. This function is compatible with IPv6."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:coalesce(X,...)":
+        "prefix": "coalesce"
+        "body": "coalesce(${1:X}, ${2:Y})${3}"
+        "description": "This function takes an arbitrary number of arguments and returns the first value that is not null."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:false()":
+        "prefix": "false"
+        "body": "false()"
+        "description": "This function enables you to specify a conditional that is obviously false, for example 1==0. You do not specify a field with this function."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:if(X,Y,Z)":
+        "prefix": "if"
+        "body": "if(${1:X}, ${2:Y}, ${3:Z})${4}"
+        "description": "This function takes three arguments. The first argument X must be a Boolean expression. If X evaluates to TRUE, the result is the second argument Y. If, X evaluates to FALSE, the result evaluates to the third argument Z."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:like(TEXT, PATTERN)":
+        "prefix": "like"
+        "body": "like(${1:TEXT}, ${2:PATTERN})${3}"
+        "description": "This function takes two arguments, a string to match TEXT and a match expression string PATTERN. It returns TRUE if and only if the first argument is like the SQLite pattern in Y. The pattern language supports exact text match, as well as % characters for wildcards and _ characters for a single character match."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:match(SUBJECT, \"REGEX\")":
+        "prefix": "match"
+        "body": "match(${1:SUBJECT}, ${2:REGEX})${3}"
+        "description": "This function compares the regex string REGEX to the value of SUBJECT and returns a Boolean value. It returns true if the REGEX can find a match against any substring of SUBJECT."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:null()":
+        "prefix": "null"
+        "body": "null()"
+        "description": "This function takes no arguments and returns NULL. The evaluation engine uses NULL to represent \"no value\". Setting a field to NULL clears the field value."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:nullif(X,Y)":
+        "prefix": "nullif"
+        "body": "nullif(${1:X}, ${2:Y})${3}"
+        "description": "This function is used to compare fields. The function takes two arguments, X and Y, and returns NULL if X = Y. Otherwise it returns X."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:searchmatch(X)":
+        "prefix": "searchmatch"
+        "body": "searchmatch((${1:X})${2}"
+        "description": "This function takes one argument X, which is a search string. The function returns true IF AND ONLY IF the event matches the search string."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:true()":
+        "prefix": "true"
+        "body": "true()"
+        "description": "This function enables you to specify a conditional that is obviously true, for example 1==1. You do not specify a field with this function."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:validate(X,Y,...)":
+        "prefix": "validate"
+        "body": "validate(${1:X}, ${2:Y})${3}"
+        "description": "This function takes pairs of arguments, Boolean expressions X and strings Y. The function returns the string Y corresponding to the first expression X that evaluates to False and defaults to NULL if all are True."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:tonumber(NUMSTR[,BASE])":
+        "prefix": "tonumber"
+        "body": "tonumber(${1:X})${2}"
+        "description": "This function converts the input string NUMSTR to a number. NUMSTR can be a field name or a value. BASE is optional and used to define the base of the number to convert to. BASE can be 2 to 36, and defaults to 10. If the tonumberfunction cannot parse a field value to a number, for example if the value contains a leading and trailing space, the function returns NULL. Use the trim function to remove leading or trailing spaces. If the tonumber function cannot parse a literal string to a number, it returns an error."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:tostring(X,Y)":
+        "prefix": "tostring"
+        "body": "tostring(${1:X}, ${2:Y})${3}"
+        "description": "This function converts the input value to a string. If the input value is a number, it reformats it as a string. If the input value is a Boolean value, it returns the corresponding string value, \"True\" or \"False\"."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:md5(X)":
+        "prefix": "md5"
+        "body": "md5(${1:X})${2}"
+        "description": "This function computes and returns the MD5 hash of a string value X."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:sha1(X)":
+        "prefix": "sha1"
+        "body": "sha1(${1:X})${2}"
+        "description": "This function computes and returns the secure hash of a string value X based on the FIPS compliant SHA-1 hash function."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:sha256(X)":
+        "prefix": "sha256"
+        "body": "sha256(${1:X})${2}"
+        "description": "This function computes and returns the secure hash of a string value X based on the FIPS compliant SHA-256 hash function."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:sha512(X)":
+        "prefix": "sha512"
+        "body": "sha512(${1:X})${2}"
+        "description": "This function computes and returns the secure hash of a string value X based on the FIPS compliant SHA-512 hash function."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:now()":
+        "prefix": "now"
+        "body": "now()"
+        "description": "This function takes no arguments and returns the time that the search was started. The time is represented in Unix time or in seconds since Epoch time."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:relative_time(X,Y)":
+        "prefix": "relative_time"
+        "body": "relative_time(${1:X}, ${2:Y})${3}"
+        "description": "This function takes an epochtime time, X, as the first argument and a relative time specifier, Y, as the second argument and returns the epochtime value of Y applied to X."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:strftime(X,Y)":
+        "prefix": "strftime"
+        "body": "strftime(${1:X}, ${2:Y})${3}"
+        "description": "This function takes an epochtime value, X, as the first argument and renders it as a string using the format specified by Y."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:strptime(X,Y)":
+        "prefix": "strptime"
+        "body": "strptime(${1:X}, ${2:Y})${3}"
+        "description": "This function takes a time represented by a string, X, and parses it into a timestamp using the format specified by Y."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:time()":
+        "prefix": "time"
+        "body": "time()"
+        "description": "This function returns the wall-clock time with microsecond resolution. The value of time() will be different for each event based on when that event was processed by the eval command."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:isbool(X)":
+        "prefix": "isbool"
+        "body": "isbool(${1:X})${2}"
+        "description": "This function takes one argument X and evaluates whether X is a Boolean data type. The function returns TRUE if X is Boolean. Use this function with functions that return Boolean data types, such as cidrmatch and mvfind."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:isint(X)":
+        "prefix": "isint"
+        "body": "isint(${1:X})${2}"
+        "description": "This function takes one argument X and returns TRUE if X is an integer."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:isnotnull(X)":
+        "prefix": "isnotnull"
+        "body": "isnotnull(${1:X})${2}"
+        "description": "This function takes one argument X and returns TRUE if X is not NULL. This is a useful check for whether or not a field (X) contains a value."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:isnull(X)":
+        "prefix": "isnull"
+        "body": "isnull(${1:X})${2}"
+        "description": "This function takes one argument X and returns TRUE if X is NULL."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:isnum(X)":
+        "prefix": "isnum"
+        "body": "isnum(${1:X})${2}"
+        "description": "This function takes one argument X and returns TRUE if X is a number."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:isstr(X)":
+        "prefix": "isstr"
+        "body": "isstr(${1:X})${2}"
+        "description": "This function takes one argument X and returns TRUE if X is a string."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:typeof(X)":
+        "prefix": "typeof"
+        "body": "typeof(${1:X})${2}"
+        "description": "This function takes one argument and returns a string representation of its type."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:abs(X)":
+        "prefix": "abs"
+        "body": "abs(${1:X})${2}"
+        "description": "This function takes a number X and returns its absolute value."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:ceiling(X)":
+        "prefix": "ceiling"
+        "body": "ceiling(${1:X})${2}"
+        "description": "This function rounds a number X up to the next highest integer."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:exact(X)":
+        "prefix": "exact"
+        "body": "exact(${1:X})${2}"
+        "description": "This function renders the result of a numeric eval calculation with a larger amount of precision in the formatted output."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:exp(X)":
+        "prefix": "exp"
+        "body": "exp(${1:X})${2}"
+        "description": "This function takes a number X and returns the exponential function eX."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:floor(X)":
+        "prefix": "floor"
+        "body": "floor(${1:X})${2}"
+        "description": "This function rounds a number X down to the nearest whole integer."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:ln(X)":
+        "prefix": "ln"
+        "body": "ln(${1:X})${2}"
+        "description": "This function takes a number X and returns its natural log."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:log(X[,Y])":
+        "prefix": "log"
+        "body": "log(${1:X})${2}"
+        "description": "This function takes either one or two numeric arguments and returns the log of the first argument X using the second argument Y as the base. If the second argument Y is omitted, this function evaluates the log of number X with base 10."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:pi()":
+        "prefix": "pi"
+        "body": "pi()"
+        "description": "This function takes no arguments and returns the constant pi to 11 digits of precision."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:pow(X,Y)":
+        "prefix": "pow"
+        "body": "pow(${1:X}, ${2:Y})${3}"
+        "description": "This function takes two numeric arguments X and Y and returns XY."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:round(X,Y)":
+        "prefix": "round"
+        "body": "round(${1:X}, ${2:Y})${3}"
+        "description": "This function takes one or two numeric arguments X and Y, returning X rounded to the amount of decimal places specified by Y. The default is to round to an integer."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:sigfig(X)":
+        "prefix": "sigfig"
+        "body": "sigfig(${1:X})${2}"
+        "description": "This function takes one argument X, a number, and rounds that number to the appropriate number of significant figures."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:sqrt(X)":
+        "prefix": "sqrt"
+        "body": "sqrt(${1:X})${2}"
+        "description": "This function takes one numeric argument X and returns its square root."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:commands(X)":
+        "prefix": "commands"
+        "body": "commands(${1:X})${2}"
+        "description": "This function takes a search string, or field that contains a search string, X and returns a multivalued field containing a list of the commands used in X. (This is generally not recommended for use except for analysis of audit.log events.)"
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:mvappend(X,...)":
+        "prefix": "mvappend"
+        "body": "mvappend(${1:X}, ${2:Y})${3}"
+        "description": "This function takes an arbitrary number of arguments and returns a multivalue result of all the values. The arguments can be strings, multivalue fields or single value fields."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:mvcount(MVFIELD)":
+        "prefix": "mvcount"
+        "body": "mvcount(${1:MVFIELD})${2}"
+        "description": "This function takes a field MVFIELD. The function returns the number of values if it is a multivalue, 1 if it is a single value field, and NULL otherwise."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:mvdedup(X)":
+        "prefix": "mvdedup"
+        "body": "mvdedup(${1:X})${2}"
+        "description": "This function takes a multivalue field X and returns a multivalue field with its duplicate values removed."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:mvfilter(X)":
+        "prefix": "mvfilter"
+        "body": "mvfilter(${1:X})${2}"
+        "description": "This function filters a multivalue field based on an arbitrary Boolean expression X. The Boolean expression X can reference ONLY ONE field at a time."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:mvfind(MVFIELD, \"REGEX\")":
+        "prefix": "mvfind"
+        "body": "mvfind(${1:MVFIELD}, ${2:REGEX})${3}"
+        "description": "This function tries to find a value in multivalue field X that matches the regular expression REGEX. If a match exists, the index of the first matching value is returned (beginning with zero). If no values match, NULL is returned."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:mvindex(MVFIELD, STARTINDEX, ENDINDEX)":
+        "prefix": "mvindex"
+        "body": "mvindex(${1:MVFIELD}, ${2:STARTINDEX}, ${3:ENDINDEX})${4}"
+        "description": "This function takes two or three arguments, field MVFIELD and numbers STARTINDEX and ENDINDEX, and returns a subset of the multivalue field using the indexes provided."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:mvindex(MVFIELD,STARTINDEX)":
+        "prefix": "mvindex"
+        "body": "mvindex(${1:MVFIELD}, ${2:STARTINDEX})${3}"
+        "description": "For mvindex(mvfield, startindex, [endindex]), endindex is inclusive and optional. Both startindex and endindex can be negative, where -1 is the last element. If endindex is not specified, it returns only the value at startindex. If the indexes are out of range or invalid, the result is NULL."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:mvjoin(MVFIELD,STR)":
+        "prefix": "mvjoin"
+        "body": "mvjoin(${1:MVFIELD}, ${2:STR})${3}"
+        "description": "This function takes two arguments, multivalue field MVFIELD and string delimiter STR. The function concatenates the individual values of MVFIELD with copies of STR in between as separators."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:mvrange(X,Y,Z)":
+        "prefix": "mvrange"
+        "body": "mvrange(${1:X}, ${2:Y}, ${3:Z})${4}"
+        "description": "This function creates a multivalue field for a range of numbers. This function can contain up to three arguments: a starting number X, an ending number Y (exclusive), and an optional step increment Z. If the increment is a timespan such as '7'd, the starting and ending numbers are treated as epoch times."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:mvsort(X)":
+        "prefix": "mvsort"
+        "body": "mvsort(${1:X}, ${2:Y})${3}"
+        "description": "This function uses a multivalue field X and returns a multivalue field with the values sorted lexicographically."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:mvzip(X,Y,\"Z\")":
+        "prefix": "mvzip"
+        "body": "mvzip(${1:X}, ${2:Y}, ${3:Z})${4}"
+        "description": "This function takes two multivalue fields, X and Y, and combines them by stitching together the first value of X with the first value of field Y, then the second with the second, and so on. The third argument, Z, is optional and is used to specify a delimiting character to join the two values. The default delimiter is a comma. This is similar to Python's zip command."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:max(X,...)":
+        "prefix": "max"
+        "body": "max(${1:X}, ${2:Y})${3}"
+        "description": "This function takes an arbitrary number of numeric or string arguments, and returns the max; strings are greater than numbers."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:min(X,...)":
+        "prefix": "min"
+        "body": "min(${1:X}, ${2:Y})${3}"
+        "description": "This function takes an arbitrary number of numeric or string arguments, and returns the min; strings are greater than numbers."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:random()":
+        "prefix": "random"
+        "body": "random()"
+        "description": "This function takes no arguments and returns a pseudo-random integer ranging from zero to 231-1, for example: 0…2147483647"
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:len(X)":
+        "prefix": "len"
+        "body": "len(${1:X})${2}"
+        "description": "This function returns the character length of a string X."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:lower(X)":
+        "prefix": "lower"
+        "body": "lower(${1:X})${2}"
+        "description": "This function takes one string argument and returns the lowercase version. The upper() function also exists for returning the uppercase version."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:ltrim(X[,Y])":
+        "prefix": "ltrim"
+        "body": "ltrim(${1:X})${2}"
+        "description": "This function takes one or two arguments X and Y and returns X with the characters in Y trimmed from the left side. If Y is not specified, spaces and tabs are removed."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:replace(X,Y,Z)":
+        "prefix": "replace"
+        "body": "replace(${1:X}, ${2:Y}, ${3:Z})${4}"
+        "description": "This function returns a string formed by substituting string Z for every occurrence of regex string Y in string X. The third argument Z can also reference groups that are matched in the regex."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:rtrim(X[,Y])":
+        "prefix": "rtrim"
+        "body": "rtrim(${1:X})${2}"
+        "description": "This function takes one or two arguments X and Y and returns X with the characters in Y trimmed from the right side. If Y is not specified, spaces and tabs are removed."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:spath(X,Y)":
+        "prefix": "spath"
+        "body": "spath(${1:X}, ${2:Y})${3}"
+        "description": "This function takes two arguments: an input source field X and an spath expression Y, that is the XML or JSON formatted location path to the value that you want to extract from X. If Y is a literal string, it needs quotes, spath(X,\"Y\"). If Y is a field name (with values that are the location paths), it doesn't need quotes. This may result in a multivalued field. Read more about the spath search command."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:split(X,\"Y\")":
+        "prefix": "split"
+        "body": "split(${1:X}, ${2:Y})${3}"
+        "description": "This function takes two arguments, field X and delimiting character Y. It splits the value(s) of X on the delimiter Y and returns X as a multivalue field."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:substr(X,Y,Z)":
+        "prefix": "substr"
+        "body": "substr(${1:X}, ${2:Y}, ${3:Z})${4}"
+        "description": "This function takes either two or three arguments, where X is a string and Y and Z are numeric. It returns a substring of X, starting at the index specified by Y with the number of characters specified by Z. If Z is not given, it returns the rest of the string."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:trim(X[,Y])":
+        "prefix": "trim"
+        "body": "trim(${1:X})${2}"
+        "description": "This function takes one or two arguments X and Y and returns X with the characters in Y trimmed from both sides. If Y is not specified, spaces and tabs are removed."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:upper(X)":
+        "prefix": "upper"
+        "body": "upper(${1:X})${2}"
+        "description": "This function takes one string argument and returns the uppercase version. The lower() function also exists for returning the lowercase version."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:urldecode(X)":
+        "prefix": "urldecode"
+        "body": "urldecode(${1:X})${2}"
+        "description": "This function takes one URL string argument X and returns the unescaped or decoded URL string."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:acos(X)":
+        "prefix": "acos"
+        "body": "acos(${1:X})${2}"
+        "description": "This function computes the arc cosine of X, in the interval [0,pi] radians."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:acosh(X)":
+        "prefix": "acosh"
+        "body": "acosh(${1:X})${2}"
+        "description": "This function computes the arc hyperbolic cosine of X, in radians."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:asin(X)":
+        "prefix": "asin"
+        "body": "asin(${1:X})${2}"
+        "description": "This function computes the arc sine of X, in the interval [-pi/2,+pi/2] radians."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:asinh(X)":
+        "prefix": "asinh"
+        "body": "asinh(${1:X})${2}"
+        "description": "This function computes the arc hyperbolic sine of X, in radians."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:atan(X)":
+        "prefix": "atan"
+        "body": "atan(${1:X})${2}"
+        "description": "This function computes the arc tangent of X, in the interval [-pi/2,+pi/2] radians."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:atan2(Y, X)":
+        "prefix": "atan2"
+        "body": "atan2(${1:X}, ${2:Y})${3}"
+        "description": "This function computes the arc tangent of Y, X in the interval [-pi,+pi] radians. Y is a value that represents the proportion of the y-coordinate. X is the value that represents the proportion of the x-coordinate."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:atanh(X)":
+        "prefix": "atanh"
+        "body": "atanh(${1:X})${2}"
+        "description": "This function computes the arc hyperbolic tangent of X, in radians."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:cos(X)":
+        "prefix": "cos"
+        "body": "cos(${1:X})${2}"
+        "description": "This function computes the cosine of an angle of X radians."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:cosh(X)":
+        "prefix": "cosh"
+        "body": "cosh(${1:X})${2}"
+        "description": "This function computes the hyperbolic cosine of X radians."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:hypot(X,Y)":
+        "prefix": "hypot"
+        "body": "hypot(${1:X}, ${2:Y})${3}"
+        "description": "This function computes the hypotenuse of a right-angled triangle whose legs are X and Y."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:sin(X)":
+        "prefix": "sin"
+        "body": "sin(${1:X})${2}"
+        "description": "This function computes the sine."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:sinh(X)":
+        "prefix": "sinh"
+        "body": "sinh(${1:X})${2}"
+        "description": "This function computes the hyperbolic sine."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:tan(X)":
+        "prefix": "tan"
+        "body": "tan(${1:X})${2}"
+        "description": "This function computes the tangent."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
+    "EVAL:tanh(X)":
+        "prefix": "tanh"
+        "body": "tanh(${1:X})${2}"
+        "description": "This function computes the hyperbolic tangent."
+        "descriptionMoreURL": "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/CommonEvalFunctions"
+
     "LOOKUP-<class>":
         "prefix": "lookup"
         "body": "LOOKUP-${1:class} = ${2:$TRANSFORM_STANZA} ${3:match_field} AS ${4:match_field_in_event} OUTPUT ${5:output_field} AS ${6:output_field_in_event}"
@@ -283,7 +775,7 @@
 
     "SEDCMD-<class> = <sed script>":
         "prefix": "sedcmd"
-        "body": "SEDCMD-<${1:class}> = ${2}"
+        "body": "SEDCMD-${1:class} = ${2}"
         "description": "Only used at index time. Commonly used to anonymize incoming data at index time, such as credit card or social security numbers. For more information, search the online documentation for \"anonymize data.\""
         "descriptionMoreURL": "http://docs.splunk.com/Documentation/Splunk/latest/Admin/Propsconf"
 
