@@ -65,12 +65,20 @@ patterns: [
     }
     {
         comment: "Eval field extraction"
-        match: "^\\s*(EVAL-)([\\w]+?)\\s*(=)\\s*(.+)?"
+        match: "^\\s*(EVAL-)([\\w]+?)\\s*(=)\\s*(?:.+)?"
         captures: {
             1: { name: "support.class.splunk-conf.props" }
             2: { name: "entity.name.function.splunk-conf.props" }
             3: { name: "keyword.operator.splunk-conf.props" }
-            4: { name: "string.splunk-conf.props" }
+        }
+    }
+    {
+        comment: "Sed Script"
+        match: "^\\s*(SEDCMD-)([\\w]+?)\\s*(=)\\s*(?:.+)?"
+        captures: {
+            1: { name: "support.class.splunk-conf.props" }
+            2: { name: "entity.name.function.splunk-conf.props" }
+            3: { name: "keyword.operator.splunk-conf.props" }
         }
     }
     {
