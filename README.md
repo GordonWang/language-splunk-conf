@@ -1,2 +1,3 @@
 # language-splunk-conf
-The atom plugin for splunk configuration files
+
+Splunk conf file syntax highlighting in Atom and code snippets.

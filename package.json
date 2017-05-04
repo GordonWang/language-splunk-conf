@@ -1,0 +1,17 @@
+{
+  "name": "language-splunk-conf",
+  "version": "0.1.0",
+  "description": "Splunk conf file highlighting in Atom",
+  "engines": {
+    "atom": "*"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com:GordonWang/language-splunk-conf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GordonWang/language-splunk-conf/issues"
+  },
+  "license": "Apache License 2.0"
+}
