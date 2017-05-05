@@ -21,7 +21,7 @@ patterns: [
         }
     }
     {
-        match: "^\\s*(REPORT-)([\\w]+?)\\s*(=)(.*)$"
+        match: "^\\s*(REPORT-)([\\w\\-\\.\\:]+?)\\s*(=)(.*)$"
         comment: "Transform field extraction"
         captures: {
             1: { name: "support.class.splunk-conf.props" }
@@ -31,7 +31,7 @@ patterns: [
         }
     }
     {
-        match: "^\\s*(EXTRACT-)([\\w]+?)\\s*(=)\\s*([^\\s]+)?\\s*(in)?\\s*(\\w+)?"
+        match: "^\\s*(EXTRACT-)([\\w\\-\\.\\:]+?)\\s*(=)\\s*([^\\s]+)?\\s*(in)?\\s*(\\w+)?"
         comment: "Inlined field extraction"
         captures: {
             1: { name: "support.class.splunk-conf.props" }
@@ -44,7 +44,7 @@ patterns: [
     }
     {
         comment: "Lookup field extraction"
-        match: "^\\s*(LOOKUP-)([\\w]+?)\\s*(=)\\s*(.+)?"
+        match: "^\\s*(LOOKUP-)([\\w\\-\\.\\:]+?)\\s*(=)\\s*(.+)?"
         captures: {
             1: { name: "support.class.splunk-conf.props" }
             2: { name: "entity.name.function.splunk-conf.props" }
@@ -53,7 +53,7 @@ patterns: [
         }
     }
     {
-        match: "^\\s*(FIELDALIAS-)([\\w]+?)\\s*(=)(.+?)\\s(AS|as)\\s(.*)"
+        match: "^\\s*(FIELDALIAS-)([\\w\\-\\.\\:]+?)\\s*(=)(.+?)\\s(AS|as)\\s(.*)"
         captures: {
             1: { name: "support.class.splunk-conf.props" }
             2: { name: "entity.name.function.splunk-conf.props" }
@@ -65,16 +65,23 @@ patterns: [
     }
     {
         comment: "Eval field extraction"
-        match: "^\\s*(EVAL-)([\\w]+?)\\s*(=)\\s*(?:.+)?"
+        match: "^\\s*(EVAL-)([\\w]+?)\\s*(=)(.*)$"
         captures: {
             1: { name: "support.class.splunk-conf.props" }
             2: { name: "entity.name.function.splunk-conf.props" }
             3: { name: "keyword.operator.splunk-conf.props" }
+            4: {
+                patterns: [
+                    {
+                        include: "source.splunk"
+                    }
+                ]
+            }
         }
     }
     {
         comment: "Sed Script"
-        match: "^\\s*(SEDCMD-)([\\w]+?)\\s*(=)\\s*(?:.+)?"
+        match: "^\\s*(SEDCMD-)([\\w\\-\\.\\:]+?)\\s*(=)\\s*(?:.+)?"
         captures: {
             1: { name: "support.class.splunk-conf.props" }
             2: { name: "entity.name.function.splunk-conf.props" }
