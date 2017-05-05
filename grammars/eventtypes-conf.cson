@@ -17,13 +17,26 @@ patterns: [
     }
     {
         comment: "eventtypes configuration"
-        match: "^\\s*(disabled|search|priority|description|tags)\\s*(=)\\s*(.*?)\\s*$"
+        match: "^\\s*(disabled|priority|description|tags)\\s*(=)\\s*(.*?)\\s*$"
         captures: {
             1: { name: "entity.name.function.splunk-conf.eventtypes" }
             2: { name: "keyword.operator.splunk-conf.eventtypes" }
             3: {
                 patterns: [
                     { include: "source.splunk-conf.value" }
+                ]
+            }
+        }
+    }
+    {
+        comment: "use spl to highlight the search"
+        match: "^\\s*(search)\\s*(=)(.*)$"
+        captures: {
+            1: { name: "entity.name.function.splunk-conf.eventtypes" }
+            2: { name: "keyword.operator.splunk-conf.eventtypes" }
+            3: {
+                patterns: [
+                    { include: "source.splunk" }
                 ]
             }
         }
