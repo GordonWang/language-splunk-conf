@@ -1,6 +1,6 @@
 ".source.splunk-conf.props":
     "priority = <number>":
-        "prefix": "charset"
+        "prefix": "priority"
         "body": "priority = ${1}"
         "description": "Overrides the default ASCII ordering of matching stanza names."
         "descriptionMoreURL": "http://docs.splunk.com/Documentation/Splunk/latest/Admin/Propsconf"
